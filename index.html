@@ -6,9 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.yrl.is/conversion.js"></script>
+    <script>
+        const f = () => {
+            console.log("OK")
+            const email = document.getElementById("email").val
+            yrl_conversion({email: email})
+            return false;
+        }
+    </script>
 </head>
 <body>
-    <form action="" method="get">
+    <form onSubmit="return f()">
         <input type="email" name="email" id="email" />
         <input type="submit" value="Submit">
     </form>
