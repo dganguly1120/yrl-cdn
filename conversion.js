@@ -12,7 +12,7 @@ const yrl_conversion = (content={}) => {
   let cookies = decodeURIComponent(document.cookie).split(';');
   let refId = "";
   for(let i = 0; i <cookies.length; i++){
-      let c = ca[i];
+      let c = cookies[i];
       while (c.charAt(0) == ' ') {
           c = c.substring(1);
       }
@@ -23,7 +23,7 @@ const yrl_conversion = (content={}) => {
 
   return new Promise(async (resolve, reject) => {
       try {
-          const rawResponse = await fetch(`https://yrl.is/conversion/`, {
+          const rawResponse = await fetch(`https://dev.yrl.is/conversion/`, {
               method: "POST",
               headers: {
                   Accept: "application/json",
