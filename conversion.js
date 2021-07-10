@@ -23,7 +23,7 @@ const yrl_conversion = (content={}) => {
 
   return new Promise(async (resolve, reject) => {
       try {
-          const rawResponse = await fetch(`https://yrl.is/conversion/`, {
+          const rawResponse = await fetch(`https://dev.yrl.is/conversion/`, {
               method: "POST",
               headers: {
                   Accept: "application/json",
