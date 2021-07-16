@@ -3,8 +3,10 @@ const setCookie = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const y = urlParams.get("yrl_y");
+  const d = (new Date()).getTime() + 1000*60*60*24*7;
+  const expires = "expires="+(new Date(d)).toUTCString();
   if (y) 
-      document.cookie = `__yrl_referral=${y}`;
+      document.cookie = `__yrl_referral=${y};`+expires;
 }
 setCookie();
 const yrl_conversion = (content={}) => {
@@ -32,6 +34,7 @@ const yrl_conversion = (content={}) => {
               body: JSON.stringify({ yrl: refId, content: content }),
           });
           const resp = await rawResponse.json();
+          document.cookie = `__yrl_referral=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`
           resolve("success");
       } catch (err) {
         console.log("something went wrong: ", err);
